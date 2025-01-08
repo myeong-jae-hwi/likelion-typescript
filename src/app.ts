@@ -10,3 +10,19 @@
 // 여러 정적 에셋 디렉토리를 사용하려면 express.static 미들웨어 함수를 여러 번 호출합니다.
 //
 // --------------------------------------------------------------------------
+
+import express from "express";
+
+const app = express();
+
+const HOSTNAME = "localhost";
+const PORT = 4000;
+const MASSAGE = `웹 서비스 구동 http://${HOSTNAME}:${PORT}`;
+
+app.get("/", (req, res, next) => {
+  res.send("<h1> Hello expressJS 졸려!!!!!! </h1>");
+});
+
+app.listen(PORT, HOSTNAME, () => {
+  console.log(MASSAGE);
+});
