@@ -12,17 +12,20 @@
 // --------------------------------------------------------------------------
 
 import express from "express";
+import "dotenv/config";
+import type { Request, Express, Response, NextFunction } from "express";
 
 const app = express();
 
-const HOSTNAME = "localhost";
-const PORT = 4000;
+const HOSTNAME = process.env.HOSTNAME ?? "localhost";
+const PORT = Number(process.env.PORT) ?? 4000;
 const MASSAGE = `웹 서비스 구동 http://${HOSTNAME}:${PORT}`;
 
-app.get("/", (req, res, next) => {
+app.get("/", (req: Request, res: Response, next: NextFunction) => {
   res.send("<h1> Hello expressJS 졸려!!!!!! </h1>");
 });
 
 app.listen(PORT, HOSTNAME, () => {
   console.log(MASSAGE);
+  console.log();
 });
